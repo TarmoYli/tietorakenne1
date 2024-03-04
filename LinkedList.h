@@ -16,6 +16,7 @@ public:
     void printList();
     void pushData(std::string newData);
     void appendData(std::string newData);
+    void deleteData(std::string delData);
 
 private:
     Node* head;
