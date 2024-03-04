@@ -1,17 +1,16 @@
 
 #include <iostream>
 #include "LinkedList.h"
+#include "Person.h"
 
 
 int main()
 {
-    Linkedlist lista = Linkedlist();
-    lista.pushData("1 push eka");
-    lista.appendData("2 append eka");
-    lista.pushData("3 push toka");
-    lista.appendData("4 append toka");
-    lista.pushData("5 push kolmas");
-    lista.deleteData("2 append eka");
-    lista.printList();
+	Person user1 = Person("Pekko", "044123123", "kotiosoite 12 c 12");	
+	Person user2 = Person("happo", "01230123");
+	user1.printStats();
+	user2.printStats();
+
+	return 0;
 }
 
