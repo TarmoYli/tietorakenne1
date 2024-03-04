@@ -6,11 +6,11 @@
 
 int main()
 {
-	Person user1 = Person("Pekko", "044123123", "kotiosoite 12 c 12");	
-	Person user2 = Person("happo", "01230123");
-	user1.printStats();
-	user2.printStats();
-
+	Person::totalPersons();
+	Person *user1 = new Person("Pekko", "044123123", "kotiosoite 12 c 12");	
+	user1->printStats();
+	Person::totalPersons();
+	delete user1;
+	Person::totalPersons();
 	return 0;
 }
-

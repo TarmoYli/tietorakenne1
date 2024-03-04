@@ -12,5 +12,8 @@ public:
 	std::string phoneNumber;
 	std::string address;
 	void printStats();
+
+	static int total;
+	static void totalPersons();
 };
 
