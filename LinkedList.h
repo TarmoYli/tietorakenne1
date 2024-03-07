@@ -1,10 +1,14 @@
 #pragma once
+#ifndef LINKEDLIST
+#define LINKEDLIST
+
 #include <iostream>
 #include <string>
+#include "Person.h"
 
 struct Node
 {
-    std::string Data;
+    Person Data;
     Node* next;
 };
 
@@ -14,10 +18,12 @@ public:
     Linkedlist();
     ~Linkedlist();
     void printList();
-    void pushData(std::string newData);
-    void appendData(std::string newData);
-    void deleteData(std::string delData);
+    void pushData(Person newData);
+    void appendData(Person newData);
+    void deleteByName(Person delData);
 
 private:
     Node* head;
 };
+
+#endif // !LINKEDLIST

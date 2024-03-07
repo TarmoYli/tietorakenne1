@@ -1,19 +1,25 @@
 #pragma once
+#ifndef PERSON
+#define PERSON
+
 #include <iostream>
 #include <string>
+
 
 class Person
 {
 public:
-
-	Person(std::string aName = "n/a", std::string aNumber = "n/a", std::string aAddress = "n/a");
+	Person();
+	Person(std::string aName, std::string aNumber, std::string aAddress);
 	~Person();
 	std::string name;
 	std::string phoneNumber;
 	std::string address;
-	void printStats();
+	void printStats() const;
 
 	static int total;
 	static void totalPersons();
 };
 
+
+#endif // !PERSON

@@ -1,16 +1,21 @@
 
 #include <iostream>
+#include <locale>
 #include "LinkedList.h"
 #include "Person.h"
+#include "Menu.h"
 
+std::string userChoice;
 
 int main()
 {
-	Person::totalPersons();
-	Person *user1 = new Person("Pekko", "044123123", "kotiosoite 12 c 12");	
-	user1->printStats();
-	Person::totalPersons();
-	delete user1;
-	Person::totalPersons();
+	setlocale(LC_ALL, "fi-FI");
+	Menu menu;
+	Linkedlist list;
+	list.pushData(menu.makePerson());
+	list.pushData(menu.makePerson());
+	list.pushData(menu.makePerson());
+	list.printList();
+
 	return 0;
 }

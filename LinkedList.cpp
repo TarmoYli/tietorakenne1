@@ -1,6 +1,6 @@
 #include "LinkedList.h"
 
-Linkedlist::Linkedlist() : head(nullptr) {}
+Linkedlist::Linkedlist() : head(nullptr) {};
 
 Linkedlist::~Linkedlist()
 {
@@ -18,12 +18,14 @@ void Linkedlist::printList()
     Node* n = head;
     while (n != nullptr)
     {
-        std::cout << n->Data << std::endl;
+        std::cout << std::endl;
+        n->Data.printStats();
+        std::cout << "***" << std::endl;
         n = n->next;
     }
 }
 
-void Linkedlist::pushData(std::string newData)
+void Linkedlist::pushData(Person newData)
 {
     Node* newNode = new Node();
     newNode->Data = newData;
@@ -31,7 +33,7 @@ void Linkedlist::pushData(std::string newData)
     head = newNode;
 }
 
-void Linkedlist::appendData(std::string newData)
+void Linkedlist::appendData(Person newData)
 {
     Node* newNode = new Node();
     newNode->Data = newData;
@@ -52,12 +54,12 @@ void Linkedlist::appendData(std::string newData)
     lastmem->next = newNode;
 }
 
-void Linkedlist::deleteData(std::string delData)
+void Linkedlist::deleteByName(Person delData)
 {
     Node* start = head;
     Node* prev = nullptr;
 
-    while (start != nullptr && start->Data != delData)
+    while (start != nullptr && start->Data.name != delData.name)
     {
         prev = start;
         start = start->next;

@@ -1,5 +1,10 @@
 #include "Person.h"
 
+int Person::total = 0;
+
+Person::Person()
+{
+}
 
 Person::Person(std::string aName, std::string aNumber, std::string aAddress)
 {
@@ -16,14 +21,14 @@ Person::~Person()
 	total--;
 }
 
-void Person::printStats()
+void Person::printStats() const
 {
 	std::cout << "NAME: " << this->name << std::endl;
 	std::cout << "NUMBER: " << this->phoneNumber << std::endl;
 	std::cout << "ADDRESS: " << this->address << std::endl;
 }
 
-int Person::total = 0;
+
 void Person::totalPersons()
 {
 	std::cout << "total #: " << Person::total << std::endl;
