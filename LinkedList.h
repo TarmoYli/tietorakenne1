@@ -23,9 +23,9 @@ public:
     void appendData(Person newData);
     void deleteByName(std::string delData);
     void printOne();
+    Node* head;
 
 private:
-    Node* head;
     Node* current;
 };
 
