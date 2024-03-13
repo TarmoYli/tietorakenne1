@@ -19,13 +19,10 @@ Person Menu::makePerson()
 	std::string addAddress;
 	std::string addPhoneNumber;
 	std::cout << "Syötä nimi: " << std::endl;
-	
 	std::getline(std::cin, addName);
 	std::cout << "Syötä osoite: " << std::endl;
-	
 	std::getline(std::cin, addAddress);
 	std::cout << "Syötä puhelin numero: " << std::endl;
-	
 	std::getline(std::cin, addPhoneNumber);
 	Person addPerson(addName, addPhoneNumber, addAddress);
 	return addPerson;

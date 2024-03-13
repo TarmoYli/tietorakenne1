@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+
 #include "Person.h"
 
 class Menu
@@ -11,6 +12,7 @@ class Menu
 public:
 	std::string printMenu();
 	std::string choice;
+
 	Person makePerson();
 };
 

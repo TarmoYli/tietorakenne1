@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+
 #include "Person.h"
 
 struct Node
@@ -20,10 +21,12 @@ public:
     void printList();
     void pushData(Person newData);
     void appendData(Person newData);
-    void deleteByName(Person delData);
+    void deleteByName(std::string delData);
+    void printOne();
 
 private:
     Node* head;
+    Node* current;
 };
 
 #endif // !LINKEDLIST
