@@ -5,8 +5,6 @@
 #include <iostream>
 #include <string>
 
-
-
 class Person
 {
 public:
@@ -17,10 +15,5 @@ public:
 	std::string phoneNumber;
 	std::string address;
 	void printStats() const;
-
-	static int total;
-	static void totalPersons();
 };
-
-
 #endif // !PERSON
