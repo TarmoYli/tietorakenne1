@@ -7,6 +7,11 @@
 
 std::string userChoice;
 
+static void waitForEnter()
+{
+	std::cout << "Paina enter jatkaaksesi..." << std::endl;
+	std::cin.get();
+}
 
 int main()
 {
@@ -14,30 +19,58 @@ int main()
 
 	Menu menu;
 	Linkedlist list;
-	
-	Node* eka;
-	Node* toka;
-	Node* koka;
+	std::string delName;
 
-	std::cout << "head: " << list.head << std::endl;
-	list.pushData(menu.makePerson());
-	eka = list.head;
-	std::cout << "head: " << list.head << std::endl;
-	list.pushData(menu.makePerson());
-	toka = list.head;
-	std::cout << "head: " << list.head << std::endl;
-	list.pushData(menu.makePerson());
-	koka = list.head;
-	std::cout << "head: " << list.head << std::endl;
-
-	std::cout << "1. " << eka << std::endl;
-	std::cout << "2. " << toka << std::endl;
-	std::cout << "3. " << koka << std::endl;
-
-	eka->Data.printStats();
+	bool isRunning = true;
+	do
+	{
+		switch (menu.printMenu())
+		{
+			case('a'):
+				list.pushData(menu.makePerson());
+				waitForEnter();
+				break;
+			case('b'):
+				list.appendData(menu.makePerson());
+				waitForEnter();
+				break;
+			case('c'):
+				list.printOne();
+				waitForEnter();
+				break;
+			case('d'):
+				list.printNext();
+				waitForEnter();
+				break;
+			case('e'):
+				list.deleteCurrent();
+				waitForEnter();
+				break;
+			case('f'):
+				list.printList();
+				waitForEnter();
+				break;
+			case('g'):
+				std::cout << "Anna poistettavan nimi: " << std::endl;
+				std::getline(std::cin, delName);
+				list.deleteByName(delName);
+				waitForEnter();
+				break;
+			case('0'):
+				std::cout << "Näkemiin." << std::endl;
+				isRunning = false;
+				break;
+		}
+	} while (isRunning);
 
 	return 0;
 }
-
+/*HENKILÖIDEN / PUH.NUMEROIDEN KÄSITTELY
+a.Lisää uusi henkilö
+b.Näytä ensimmäinen henkilö
+c.Näytä seuraava henkilö
+d.Poista kohdalla oleva henkilö
+e.Tulosta kaikki tietueet
+0. Lopetus*/
 //LC_ALL: Finnish_Finland.1252
 //LC_CTYPE : Finnish_Finland.1252

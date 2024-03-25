@@ -1,15 +1,18 @@
 #include "Menu.h"
 
-std::string Menu::printMenu()
+
+char Menu::printMenu()
 {
 	std::cout << "HENKILÖIDEN / PUH.NUMEROIDEN KÄSITTELY" << std::endl;
-	std::cout << "a.Lisää uusi henkilö" << std::endl;
-	std::cout << "b.Näytä ensimmäinen henkilö" << std::endl;
-	std::cout << "c.Näytä seuraava henkilö" << std::endl;
-	std::cout << "d.Poista kohdalla oleva henkilö" << std::endl;
-	std::cout << "e.Tulosta kaikki tietueet" << std::endl;
+	std::cout << "a.Lisää uusi henkilö alkuun" << std::endl;
+	std::cout << "b.Lisää uusi henkilö loppuun" << std::endl;
+	std::cout << "c.Näytä ensimmäinen henkilö" << std::endl;
+	std::cout << "d.Näytä seuraava henkilö" << std::endl;
+	std::cout << "e.Poista kohdalla oleva henkilö" << std::endl;
+	std::cout << "f.Tulosta kaikki tietueet" << std::endl;
+	std::cout << "g.Poista henkilö nimen mukaan" << std::endl;
 	std::cout << "0. Lopetus" << std::endl;
-	std::cin >> choice;
+	choice = _getch();
 	return choice;
 }
 

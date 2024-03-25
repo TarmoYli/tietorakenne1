@@ -1,11 +1,11 @@
 #include "LinkedList.h"
 
-Linkedlist::Linkedlist() : head(nullptr), current(nullptr) {};
+Linkedlist::Linkedlist() : head(nullptr), current(nullptr),previous(nullptr) {};
 
 Linkedlist::~Linkedlist()
 {
     Node* current = head;
-    while (current != nullptr)
+    while (current != nullptr)      // hajotetaan kaikki!
     {
         Node* next = current->next;
         delete current;
@@ -15,24 +15,61 @@ Linkedlist::~Linkedlist()
 
 void Linkedlist::printList()
 {
-    Node* n = head;
-    while (n != nullptr)
+    Node* printter = head;                         // tehdään xtra ptr koska ei haluta muuttaa headia
+    while (printter != nullptr)                    // tulostellaan kunnes törmätään nullptr
     {
         std::cout << std::endl;
-        n->Data.printStats();
-        std::cout << "***" << std::endl;
-        n = n->next;
-    }
+        printter->Data.printStats();
+        std::cout << "***" << std::endl;            // eri hieno tähdistys erottamaan data
+        printter = printter->next;
+    } 
 }
 
 void Linkedlist::printOne()
 {
-//    Node* n = head;
-    std::cout << std::endl;
+    std::cout << std::endl;                         // tyhjä rivi
     head->Data.printStats();
+    previous = head;
+    current = head->next;
     std::cout << "***" << std::endl;
 }
+void Linkedlist::printNext()
+{
+    std::cout << std::endl;
+    current->Data.printStats();
+    if (current->next != nullptr)
+    {
+        previous = current;
+        current = current->next;
+    }
+    else                                            // asetetaan current headiin koska mentiin viimeiseen
+    {
+        std::cout << "Current is now at the beginning." << std::endl;
+        current = head;
+    }
 
+    std::cout << "***" << std::endl;        
+}
+
+void Linkedlist::deleteCurrent()
+{
+    if (current == nullptr)                 // jos ei olla missään
+    {
+        return;
+    }
+    if (current == head)                    // jos ollaan headissa niin siirretään myös headia
+    {
+        head = current->next;
+        delete current;
+        current = head;
+    }
+    else                                    // jos ollaan jossain muualla niin käytetään previous muuttujaa
+    {
+        previous->next = current->next;
+        delete current;
+        current = previous->next;
+    }
+}
 void Linkedlist::pushData(Person newData)
 {
     Node* newNode = new Node();
@@ -41,49 +78,46 @@ void Linkedlist::pushData(Person newData)
     head = newNode;
 }
 
-void Linkedlist::appendData(Person newData)
+void Linkedlist::appendData(Person newData)     // listan loppuun lisätään node
 {
     Node* newNode = new Node();
     newNode->Data = newData;
     newNode->next = nullptr;
 
-    if (head == nullptr)
+    if (head == nullptr)                        // jos listassa ei ole mitään vielä
     {
         head = newNode;
         return;
     }
 
     Node* last = head;
-    while (last->next != nullptr)
+    while (last->next != nullptr)               // liikutaan kunnes törmätään nullptr.
     {
         last = last->next;
     }
-
     last->next = newNode;
 }
 
-void Linkedlist::deleteByName(std::string delData)
+void Linkedlist::deleteByName(std::string delData)  // poistetaan nimellä
 {
-    Node* start = head;
+    Node* start = head;                             // aloitetaan headista
     Node* prev = nullptr;
 
-    while (start != nullptr && start->Data.name != delData)
-    {
+    while (start != nullptr && start->Data.name != delData)     // loopataan kunnes joko start on nullptr eli ollaan lopussa tai data.name on poistettava
+    {                                                           
         prev = start;
         start = start->next;
     }
-    if (start != nullptr)
+    if (start != nullptr)                                       // jos start ei ole nullptr (eli tuli osuma haetulle poistolle)
     {
-        if (prev == nullptr)
+        if (prev == nullptr)                                    // tarkistetaan onko prev nullptr koska silloin ollaan headissa ja delData on osunut heti eikä prev:lle ole asetettu mitään
         {
-            head = start->next;
+            head = head->next;                                  // head osoittaa nyt seuraavaan solmuun.
         }
-        else
+        else                                                    // jos prev:llä ON joku arvo(osoite)
         {
-            prev->next = start->next;
+            prev->next = start->next;                           // prev:n nextiin asetetaan osuman saaneen noden next eli sitä seuraavan noden osoite.... voi olla nullptr.
         }
-        delete start;
+        delete start;                                           // ja nyt voidaan poistaa osuman saanut node
     }
 }
-
-

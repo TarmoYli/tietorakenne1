@@ -4,15 +4,15 @@
 
 #include <iostream>
 #include <string>
-
+#include <conio.h>
+#include "LinkedList.h"
 #include "Person.h"
 
 class Menu
 {
 public:
-	std::string printMenu();
-	std::string choice;
-
+	char printMenu();
+	char choice;
 	Person makePerson();
 };
 
