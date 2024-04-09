@@ -60,12 +60,14 @@ void Linkedlist::deleteCurrent()
     if (current == head)                    // jos ollaan headissa niin siirretään myös headia
     {
         head = current->next;
+        std::cout << current->Data.name << " poistettu" << std::endl;
         delete current;
         current = head;
     }
     else                                    // jos ollaan jossain muualla niin käytetään previous muuttujaa
     {
         previous->next = current->next;
+        std::cout << current->Data.name << " poistettu" << std::endl;
         delete current;
         current = previous->next;
     }

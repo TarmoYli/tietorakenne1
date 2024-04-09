@@ -12,7 +12,9 @@ char Menu::printMenu()
 	std::cout << "f.Tulosta kaikki tietueet" << std::endl;
 	std::cout << "g.Poista henkilö nimen mukaan" << std::endl;
 	std::cout << "0. Lopetus" << std::endl;
-	choice = _getch();
+	std::cin >> choice;
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	return choice;
 }
 

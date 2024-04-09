@@ -8,14 +8,9 @@ Person::Person(std::string aName, std::string aNumber, std::string aAddress)
 	this->name = aName;
 	this->phoneNumber = aNumber;
 	this->address = aAddress;
-	std::cout << name << " luotu" << std::endl;
-
 }
 
-Person::~Person()
-{
-	std::cout << name << " tuhottu." << std::endl;
-}
+Person::~Person(){}
 
 void Person::printStats() const
 {
